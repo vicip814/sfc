@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HKSI Paper 2｜限期・資金要求・罰款速記表｜Dark補漏v5｜關注＋填空測驗版</title>
+<style>
+:root{--bg:#0b1020;--card:#121a2f;--text:#e7edf8;--muted:#9aa7bd;--line:#26324a;--accent:#7cafff;--danger:#ff8a8a;--money:#68d391;--time:#f6ad55;--fine:#fca5a5}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang HK","Microsoft JhengHei",Arial,sans-serif;line-height:1.55}
+header{position:sticky;top:0;z-index:10;background:rgba(11,16,32,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 14px 10px}
+h1{font-size:20px;margin:0 0 8px}.sub{font-size:13px;color:var(--muted);margin-bottom:10px}.controls{display:grid;grid-template-columns:1fr 120px;gap:8px}.controls input,.controls select{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#0f172a;color:var(--text);font-size:15px}.chips,.focusbar{display:flex;gap:6px;overflow:auto;padding-top:8px}.chip,.focusbtn{white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:6px 10px;background:#0f172a;color:var(--text);font-size:13px}.chip.active,.focusbtn.active{background:var(--accent);color:white;border-color:var(--accent)}.focusbtn.clear{color:#fca5a5}.focusbtn.clear:hover{border-color:#fca5a5}
+main{padding:12px}.count{font-size:13px;color:var(--muted);margin:4px 0 10px}.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;margin:10px 0;padding:12px;box-shadow:0 8px 24px rgba(0,0,0,.22)}.card.focused{border-color:#f6ad55;box-shadow:0 0 0 1px rgba(246,173,85,.38),0 8px 24px rgba(0,0,0,.28)}
+.top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.chapter{font-size:12px;color:var(--muted)}.tag{font-size:12px;border-radius:999px;padding:3px 8px;font-weight:600}.tag.限期{background:#3a230d;color:#f6ad55}.tag.資金{background:#10351f;color:#68d391}.tag.罰則{background:#3b1212;color:#fca5a5}.tag.比例{background:#132a4f;color:#93c5fd}.tag.紀錄{background:#2a214d;color:#c4b5fd}.tag.考點{background:#1f2937;color:#cbd5e1}
+.item{font-weight:700;margin:6px 0 4px;font-size:16px}.num{font-size:18px;font-weight:800;color:var(--accent);margin:2px 0}.note{font-size:14px}.source{font-size:12px;color:var(--muted);margin-top:7px}.warn{color:var(--danger);font-weight:700}.footer{color:var(--muted);font-size:12px;margin:18px 2px 30px}.hide{display:none!important}
+.focus-toggle{display:flex;align-items:center;gap:7px;min-width:70px;justify-content:flex-end;font-size:12px;color:var(--muted);user-select:none}.focus-toggle input{appearance:none;width:19px;height:19px;border:1px solid var(--line);border-radius:6px;background:#0f172a;display:inline-grid;place-items:center;margin:0}.focus-toggle input:checked{background:#f6ad55;border-color:#f6ad55}.focus-toggle input:checked::after{content:'✓';font-weight:900;color:#111827;font-size:14px}.focus-label{color:#f6ad55;font-weight:700}.reviewhint{font-size:12px;color:var(--muted);padding-top:4px}
+
+.quiz-input{width:5.8em;max-width:42vw;border:1px solid #3b4a66;border-radius:8px;background:#0b1223;color:var(--text);padding:4px 6px;margin:0 3px;font-size:16px;font-weight:800;text-align:center}.quiz-input.correct{border-color:#68d391;background:#082315;color:#b7f7cc}.quiz-input.wrong{border-color:#fca5a5;background:#2a0f12;color:#ffd2d2}.blankwrap{white-space:nowrap;display:inline-flex;align-items:center;gap:3px}.answer{font-size:12px;color:#f6ad55;margin-right:3px}.quizmsg{font-size:12px;color:#c4b5fd;padding-top:4px}.num.quizline{line-height:2.15}.focusbtn.quiz{color:#c4b5fd}.focusbtn.quiz.active{background:#7c3aed;border-color:#7c3aed;color:white}
+@media(min-width:760px){main{max-width:1100px;margin:auto}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.card{margin:0}.controls{grid-template-columns:1fr 160px}}
+</style>
+</head>
+<body>
+<header>
+<h1>HKSI Paper 2｜限期・資金要求・罰款速記表｜Dark補漏v5｜關注＋填空測驗版</h1>
+<div class="sub">按 7 章主題整理。重點放在考試最容易問的「幾日內、幾多錢、幾多年、幾多%」。新增「數字填空模式」，可遮住數字自行測驗。</div>
+<div class="controls"><input id="q" placeholder="搜尋：例如 7個營業日、500萬、速動資金、T+2"><select id="type"><option value="">全部類別</option><option>限期</option><option>資金</option><option>罰則</option><option>比例</option><option>紀錄</option><option>考點</option></select></div>
+<div class="chips" id="chips"></div>
+<div class="focusbar"><button class="focusbtn" id="focusOnly">只看關注</button><button class="focusbtn clear" id="clearFocus">清除全部關注</button><button class="focusbtn quiz" id="quizMode">數字填空模式</button><button class="focusbtn quiz" id="checkQuiz">核對答案</button><button class="focusbtn quiz" id="toggleAnswers">顯示答案</button><span class="reviewhint" id="focusCount"></span><span class="quizmsg" id="quizMsg"></span></div>
+</header>
+<main>
+<div class="count" id="count"></div>
+<div class="grid" id="grid"></div>
+<div class="footer">提示：本表是溫習速記表，不取代原文。勾選關注後會自動儲存在此手機/瀏覽器的 localStorage。填空模式會把「關鍵數值」中的阿拉伯數字遮住；輸入時可省略逗號，例如 1,000 可填 1000。遇到「任何三項」或情境題，仍要回看相關章節的完整條件。</div>
+</main>
+<script>
+const rows = [
+{ch:'第1章 監管架構',type:'限期',item:'股東周年成員大會',num:'公眾公司：會計參照期結束後6個月內；私人/擔保公司：9個月內',note:'常考「6個月 vs 9個月」。',src:'第1章 3.14'},
+{ch:'第1章 監管架構',type:'限期',item:'公司成立後首次/其後周年成員大會',num:'每個財政年度均須舉行；公眾公司：會計參照期結束後6個月內；私人公司/擔保公司：9個月內',note:'溫習手冊以「會計參照期」計，不是簡單由成立日直接計。首次AGM亦按首個財政年度/會計參照期後6或9個月規則處理；公司可按法例以書面決議或一致決議免除AGM。',src:'第1章 3.12–3.14'},
+{ch:'第1章 監管架構',type:'比例',item:'特別決議',num:'≥75%已投票成員通過；通知期不少於14天；通過後15天內交公司註冊處',note:'記：75% + 14日 + 15日。',src:'第1章 3.17'},
+{ch:'第1章 監管架構',type:'比例',item:'少數股東保障',num:'5%已繳有投票權股本可要求董事召開成員大會；100名成員或10%股份可要求財政司司長委任調查員',note:'考「三項保障」時可背這兩個數字。',src:'第1章 3.23'},
+{ch:'第1章 監管架構',type:'考點',item:'董事人數及資格',num:'私人公司至少1名董事；非私人公司至少2名董事；董事須年滿18歲',note:'私人公司一般須至少一名自然人董事。',src:'第1章 3.25–3.29'},
+{ch:'第1章 監管架構',type:'限期',item:'成員自動清盤的有償債能力證明書',num:'董事認為12個月內可全數償債；證明書須在清盤決議前5個星期內發出',note:'「12個月」是償債能力；「5星期」是證明書時間。',src:'第1章 3.55–3.57'},
+{ch:'第1章 監管架構',type:'限期',item:'債權人自動清盤',num:'提出自動清盤決議後14天內安排債權人會議；最短7天通知',note:'記：14天內開會，7天通知。',src:'第1章 3.58'},
+{ch:'第1章 監管架構',type:'限期',item:'持牌代表終止受僱',num:'持牌法團須7個營業日內通知證監會；代表可於180日內轉移隸屬關係',note:'不轉移則牌照當作在終止時被撤銷。',src:'第1章 7.8'},
+{ch:'第1章 監管架構',type:'考點',item:'負責人員最低要求',num:'每間持牌法團不少於2名RO；至少1名為執行董事；每項RA至少1名RO可時刻監督且常駐香港',note:'考第1類/第4類RO制度常見。',src:'第1章 7.10'},
+{ch:'第1章 監管架構',type:'罰則',item:'違反RO/執行董事規定',num:'第6級罰款；持續罪行每日另罰2,000港元',note:'這是第1章少數明確罰款數字。',src:'第1章 7.11'},
+{ch:'第1章 監管架構',type:'比例',item:'大股東門檻',num:'>10%股份或投票權；或控制另一法團≥35%投票權，而該法團持有目標法團>10%投票權',note:'未經證監會事先核准不得成為/繼續作為大股東。',src:'第1章 7.14–7.15'},
+{ch:'第1章 監管架構',type:'限期',item:'大股東資料變動/補救申請',num:'聯絡資料變更後14日內通知；如不知已成為大股東，察覺後3個營業日內申請核准',note:'考「14日」及「3個營業日」。',src:'第1章 7.16–7.18'},
+{ch:'第1章 監管架構',type:'限期',item:'短期牌照',num:'每次不超過3個月；24個月內總計不超過6個月',note:'不適用第3、7、8、9類RA。',src:'第1章 7.22'},
+{ch:'第1章 監管架構',type:'限期',item:'持續培訓 CPT',num:'代表/有關人士每年10小時；RO/EO每年12小時；至少5小時與RA直接相關；至少2小時職業道德/合規',note:'新入行個人從業員12個月內須完成2小時職業道德培訓。',src:'第1章 9.16'},
+{ch:'第1章 監管架構',type:'紀錄',item:'CPT紀錄',num:'至少保留3年',note:'法團及個人均應保存培訓及出席紀錄。',src:'第1章 9.20'},
+{ch:'第1章 監管架構',type:'限期',item:'證監會搜查手令',num:'可於7日內任何時間進入處所；文件可保留6個月',note:'可因刑事或SFO程序延長。',src:'第1章 11.9'},
+
+{ch:'第2章 附屬法例',type:'資金',item:'第1類證券交易：繳足股本',num:'提供證券保證金融資：1,000萬港元；其他情況：500萬港元',note:'若同時做多項RA，取最高單一要求。',src:'第2章 1.11–1.12'},
+{ch:'第2章 附屬法例',type:'資金',item:'第4類就證券提供意見：繳足股本',num:'持有客戶資產：500萬港元；不持有客戶資產：無繳足股本要求',note:'但仍有速動資金要求。',src:'第2章 1.11–1.12'},
+{ch:'第2章 附屬法例',type:'資金',item:'第8類證券保證金融資：繳足股本',num:'1,000萬港元',note:'獨立第8類SMF業務重點數字。',src:'第2章 1.11'},
+{ch:'第2章 附屬法例',type:'資金',item:'規定速動資金',num:'第1類：300萬；第4類不持客資：10萬；第4類持客資：300萬；第8類：300萬',note:'速動資金必須高於規定速動資金。',src:'第2章 1.23–1.25'},
+{ch:'第2章 附屬法例',type:'限期',item:'財政資源月報表/季報表/半年報表',num:'每月終結後3星期內；每3個月期間終結後3星期內；第4類顧問半年終結後3星期內',note:'第4類不持客資通常只需每半年提交。',src:'第2章 1.29–1.31'},
+{ch:'第2章 附屬法例',type:'比例',item:'財政資源通知門檻',num:'速動資金低於規定速動資金120%；或低於最近申報速動資金50%；或繳足股本低於規定',note:'未能遵守時要盡快及一個營業日內書面通知證監會。',src:'第2章 1.32–1.34'},
+{ch:'第2章 附屬法例',type:'罰則',item:'違反財政資源規則',num:'最高罰款100萬港元及監禁2年',note:'例如未按規定通知不合規。',src:'第2章 1.38'},
+{ch:'第2章 附屬法例',type:'限期',item:'客戶證券常設授權',num:'有效期不超過12個月；屆滿前至少14日發續期通知；屆滿後1星期內提供續期確認',note:'專業投資者續期可無期限。',src:'第2章 2.8'},
+{ch:'第2章 附屬法例',type:'比例',item:'再質押上限',num:'再質押證券抵押品總值不得超過同一營業日保證金貸款總額140%；超過須下一個營業日結束前降低',note:'常見考法：140% + 下一個營業日。',src:'第2章 2.12'},
+{ch:'第2章 附屬法例',type:'罰則',item:'客戶證券規則：意圖詐騙違規',num:'最高罰款100萬港元及監禁7年',note:'同時不合規須1個營業日內向證監會申報。',src:'第2章 2.15–2.16'},
+{ch:'第2章 附屬法例',type:'限期',item:'客戶款項：獨立帳戶',num:'收取客戶款項後1個營業日內存入獨立帳戶；非客戶款項須察覺後1個營業日內發放',note:'若款項當日或其後2個營業日內用於交收/保證金，可例外處理。',src:'第2章 3.2–3.10'},
+{ch:'第2章 附屬法例',type:'限期',item:'成交單據',num:'不遲於訂立合約後第2個營業日終結前發出',note:'同一日多宗交易可合併。',src:'第2章 4.4'},
+{ch:'第2章 附屬法例',type:'限期',item:'戶口日結單/月結單/收據',num:'日結單：事件後2個營業日內；月結單：月會計期終結後7個營業日內；收據：接獲資產後第2個營業日終結前',note:'手機溫習記：2日、7日、2日。',src:'第2章 4.8–4.12'},
+{ch:'第2章 附屬法例',type:'罰則',item:'成交單據規則：意圖詐騙',num:'公訴：100萬港元+7年；簡易：50萬港元+1年',note:'其他多個客資/紀錄規則的詐騙罰則類似。',src:'第2章 4.19'},
+{ch:'第2章 附屬法例',type:'紀錄',item:'備存紀錄期限',num:'一般紀錄至少7年；命令/指示紀錄至少2年；成交單據文本至少2年；賣空證明文件1年',note:'不合規要1個營業日內通知證監會。',src:'第2章 5.9–5.12'},
+{ch:'第2章 附屬法例',type:'罰則',item:'備存紀錄規則：意圖詐騙',num:'公訴：100萬港元+7年；簡易：50萬港元+1年',note:'例如刪除、銷毀、清除或揑改紀錄。',src:'第2章 5.14'},
+{ch:'第2章 附屬法例',type:'限期',item:'核數師及財政年度通知',num:'獲發牌/成為有聯繫實體後1個月內委任核數師；委任後7個營業日內通知證監會；核數師變動1個營業日內通知；財政年度終結日1個月內通知',note:'財政年度不得超過12個月，除非獲證監會批准。',src:'第2章 6.4–6.8'},
+{ch:'第2章 附屬法例',type:'資金',item:'投資者賠償基金申索上限',num:'證券最高50萬港元；期貨最高50萬港元；同一中介人多帳戶合計仍以50萬港元為限',note:'證券+期貨均受同一中介人違責影響時，最高可達100萬。',src:'第2章 7.12–7.13'},
+{ch:'第2章 附屬法例',type:'限期',item:'投資者賠償申索期',num:'通常3個月；若無刊登申索通知，察覺違責後6個月內',note:'逾期投資者賠償有限公司可不接受。',src:'第2章 7.14'},
+{ch:'第2章 附屬法例',type:'罰則',item:'合約限量及須申報持倉規則',num:'違反屬刑事罪行，最高罰款100,000港元及/或監禁2年',note:'持有須申報持倉量後1個營業日內書面申報，其後每日申報直至低於水平。',src:'第2章 8.1–8.9'},
+{ch:'第2章 附屬法例',type:'限期',item:'場外衍生工具匯報/結算/紀錄',num:'匯報一般T+2；不再獲豁免寬限3個月；須結算交易後1個營業日內結算；紀錄至少5年；違規罰款可達500萬港元',note:'適用於相關OTC衍生工具規則。',src:'第2章 9–10節'},
+
+{ch:'第3章 證券業務管理及監管',type:'罰則',item:'證監會紀律罰款權力',num:'最高1,000萬港元，或所獲利潤/避免損失的3倍，以較高者為準',note:'對受規管人士的紀律處分核心數字。',src:'第3章 1.10'},
+{ch:'第3章 證券業務管理及監管',type:'限期',item:'客戶身份規則：最終客戶資料',num:'證監會要求後2個營業日內提供',note:'適用於中介人從另一中介人接收指示等情況。',src:'第3章 2.6'},
+{ch:'第3章 證券業務管理及監管',type:'限期',item:'短倉申報',num:'申報日後2個營業日內；若惡劣天氣延遲，通常下一個營業日申報',note:'記住短倉申報不是T+2交易交收，而是按申報日。',src:'第5章 3.15'},
+{ch:'第3章 證券業務管理及監管',type:'資金',item:'非親身開戶身份核實',num:'首張支票/首筆存款不少於10,000港元',note:'本地及海外銀行帳戶情況均有相關10,000港元要求。',src:'第3章 4.7'},
+{ch:'第3章 證券業務管理及監管',type:'限期',item:'網絡保安及互聯網交易培訓',num:'至少每年向可接達內部網絡和系統的職員提供培訓',note:'互聯網交易/黑客風險指引常考「至少每年」。',src:'第5章 6.23'},
+{ch:'第3章 證券業務管理及監管',type:'罰則',item:'違反《打擊洗錢條例》',num:'最高罰款100萬港元及監禁2年；有意圖詐騙監管當局，監禁最高可增至7年',note:'AML罰則必背。',src:'第3章 5.6'},
+
+{ch:'第4章 聯交所證券買賣',type:'限期',item:'股本權證/界內證/牛熊證年期',num:'股本權證：1年至5年；界內證：6個月至5年；牛熊證：3個月至5年',note:'三類產品年期很容易混淆。',src:'第4章 3.24–3.29'},
+{ch:'第4章 聯交所證券買賣',type:'限期',item:'主板新申請人營業紀錄',num:'至少前3個財政年度；申報會計師報告最後會計期間結算日距上市文件不超過6個月',note:'上市條件數字題。',src:'第4章 3.34'},
+{ch:'第4章 聯交所證券買賣',type:'限期',item:'停牌後除牌',num:'聯交所可將已連續停牌18個月的發行人除牌',note:'主板長期停牌常見考點。',src:'第4章 5.6'},
+{ch:'第4章 聯交所證券買賣',type:'限期',item:'聯交所買賣交收',num:'大部分交易T+2以CCASS電子記帳交收；若T+2結束前股票不足，T+3強制補購',note:'交收基本題：T+2；補購：T+3。',src:'第4章 6.14–6.16'},
+{ch:'第4章 聯交所證券買賣',type:'比例',item:'交易費用',num:'證監會交易徵費0.0027%；會財局交易徵費0.00015%；交易費0.00565%；股票印花稅0.1%，不足1元作1元',note:'ETF、衍生權證及牛熊證交易無須繳股票印花稅。',src:'第4章 8.2–8.5'},
+{ch:'第4章 聯交所證券買賣',type:'資金',item:'轉手紙印花稅/過戶費',num:'轉手紙印花稅每張5港元；過戶費每張2.5港元',note:'細數字但容易出選擇題。',src:'第4章 8.6–8.7'},
+{ch:'第4章 聯交所證券買賣',type:'限期',item:'聯交所行政總裁紀律決定上訴',num:'通知發出後14日內向紀律委員會上訴',note:'交易所紀律程序的限期。',src:'第4章 7.5'},
+
+{ch:'第5章 其他證券活動',type:'資金',item:'核准介紹代理人',num:'最低速動資金50萬港元；無須維持繳足股本',note:'因不處理客戶資產，資本要求較低。',src:'第5章 1.3'},
+{ch:'第5章 其他證券活動',type:'資金',item:'證券保證金融資經紀行',num:'最低繳足股本1,000萬港元；最低速動資金300萬港元',note:'第1類提供保證金服務亦要留意更高FRR要求。',src:'第5章 2.6'},
+{ch:'第5章 其他證券活動',type:'限期',item:'證券保證金融資通知',num:'察覺指定情況後1個營業日內通知證監會；連續3個營業日無法償付貸款人/信貸提供者亦須通知',note:'配合每月申報表披露最大保證金貸款結餘客戶。',src:'第5章 2.6–2.7'},
+{ch:'第5章 其他證券活動',type:'比例',item:'保證金集中風險',num:'個別或關連客戶最高集中風險一般以股東資金40%為最高限額；超過須立即通知證監會',note:'另：未清償90日以上追繳保證金若超過股東資金25%，須立即通知。',src:'第5章 2.26–2.30'},
+{ch:'第5章 其他證券活動',type:'限期',item:'保證金政策/扣減率/壓力測試',num:'政策及扣減率至少每年檢視；速動資金盈餘或流動性壓力測試至少每月',note:'有重大變化時亦要檢視。',src:'第5章 2.24–2.36'},
+{ch:'第5章 其他證券活動',type:'限期',item:'保證金客戶常設授權',num:'每年續期；屆滿前14日提醒；屆滿後1星期內確認續期；續期不超過12個月',note:'與第2章客戶證券常設授權相通。',src:'第5章 2.39'},
+{ch:'第5章 其他證券活動',type:'資金',item:'淡倉申報門檻',num:'申報持倉達3,000萬港元，及達已發行股本0.02%時須申報',note:'兩個條件要一起記。',src:'第5章 3.15'},
+{ch:'第5章 其他證券活動',type:'限期',item:'分析員交易限制',num:'研究發出前30日內及發出後3個營業日內，不應買賣相關證券',note:'如分析員已在前30日交易，通常不應發出研究。',src:'第5章 5.10'},
+{ch:'第5章 其他證券活動',type:'罰則',item:'招股章程失實陳述',num:'欺詐/罔顧實情的失實陳述可處罰款及/或監禁',note:'重點是可同時有刑事及民事責任。',src:'第5章 9.4'},
+{ch:'第5章 其他證券活動',type:'比例',item:'北向ETF條件例子',num:'合資格ETF須以港元交易，且過去6個月日均資產規模不低於5.5億港元',note:'滬深港通ETF範圍相關更新。',src:'第5章 10.21'},
+
+{ch:'第6章 期權及場外衍生工具',type:'限期',item:'期權客戶調整通知',num:'交易所/結算所作出合約調整後，參與者須2個營業日內通知客戶詳情',note:'在企業行動導致期權調整時出現。',src:'第6章 3.5'},
+{ch:'第6章 期權及場外衍生工具',type:'限期',item:'即時額外按金通知',num:'接獲繳付要求後1小時內以現金清付',note:'聯交所期權結算所參與者要求，數字很考試化。',src:'第6章 4.12'},
+{ch:'第6章 期權及場外衍生工具',type:'限期',item:'期權金通知',num:'訂立期權合約當日通知客戶應付期權金，並確保迅速以現金支付',note:'和保證金要求一起記。',src:'第6章 4.6'},
+{ch:'第6章 期權及場外衍生工具',type:'考點',item:'第11/12類受規管活動',num:'尚未正式生效',note:'PDF第1章受規管活動列表附註。',src:'第1章 7.4'},
+
+{ch:'第7章 市場失當行為及不當交易手法',type:'罰則',item:'內幕消息披露違規',num:'市場失當行為審裁處可處最高800萬港元規管性罰款及/或其他制裁',note:'上市法團及/或董事可能負責。',src:'第7章 2.30'},
+{ch:'第7章 市場失當行為及不當交易手法',type:'罰則',item:'市場失當行為刑事最高刑罰',num:'公訴：監禁10年+罰款1,000萬港元；簡易：監禁3年+罰款100萬港元',note:'第7章最重要罰則。',src:'第7章 3.15'},
+{ch:'第7章 市場失當行為及不當交易手法',type:'限期',item:'未獲邀約造訪後撤銷協議',num:'訂立協議當日後28日內，或察覺違反當日後7日內，以較早者為準',note:'記：28日 vs 7日。',src:'第7章 4.4'},
+{ch:'第7章 市場失當行為及不當交易手法',type:'考點',item:'未獲邀約造訪例外對象',num:'原有客戶、持牌人、註冊機構、專業投資者、以專業身份行事的律師/會計師、放債人',note:'可用作情境題判斷。',src:'第7章 4.2'},
+{ch:'第7章 市場失當行為及不當交易手法',type:'考點',item:'市場失當行為類別',num:'內幕交易、虛假交易、操控價格、操縱證券市場、披露受禁交易資料、披露虛假/具誤導資料誘使交易',note:'第7章核心背誦清單。',src:'第7章 2.1'},
+{ch:'第7章 市場失當行為及不當交易手法',type:'罰則',item:'執法個案：記錄交易指示不當',num:'持牌代表被譴責並罰款9萬港元',note:'實例用來理解證監會執法尺度，不一定是法定最高罰款。',src:'第7章 7.20'},
+{ch:'第7章 市場失當行為及不當交易手法',type:'罰則',item:'執法個案：操控價格',num:'監禁6個月；未披露權益罰款24萬港元；取消上市公司董事資格1年',note:'實際個案，幫助記憶市場操控後果。',src:'第7章 7.24–7.25'},
+{ch:'第7章 市場失當行為及不當交易手法',type:'罰則',item:'執法個案：虛假交易',num:'60小時社會服務令及罰款18萬港元',note:'開市前時段人為買賣盤操控參考平衡價格。',src:'第7章 7.31'}
+,{ch:'第3章 證券業務管理及監管',type:'紀錄',item:'電話交易指示錄音',num:'至少保存6個月',note:'透過電話收取交易指示應用電話錄音系統記錄；若在外用流動電話接收，應立即致電辦事處錄音系統補記時間及詳情。',src:'第3章 2.5(g)'}
+,{ch:'第3章 證券業務管理及監管',type:'限期',item:'發現嚴重違規/無力償債/重大系統問題等',num:'立即向證監會匯報',note:'包括嚴重違反法例、規則或守則；影響自身/大股東/董事的無力償債；紀律行動；重大業務系統問題；客戶涉嫌嚴重市場失當等。',src:'第3章 2.64'}
+,{ch:'第4章 聯交所證券買賣',type:'資金',item:'聯交所交易權費用',num:'500,000港元',note:'有意透過聯交所買賣者，須擁有交易權並登記為交易所參與者；交易權不可轉讓。',src:'第4章 2.2'}
+,{ch:'第5章 其他證券活動',type:'比例',item:'滬深港通北向：外資持股限制',num:'單一海外投資者≤10%；海外投資者總量≤30%；持有5%另有披露規則',note:'若30%限額已超過，海外投資者會被要求售出股份；上交所/深交所上市ETF沒有持股限制。',src:'第5章 10.47–10.48'}
+,{ch:'第5章 其他證券活動',type:'資金',item:'滬深港通南向：內地個人投資者資格',num:'證券及資金帳戶至少持有人民幣500,000元',note:'南向交易通能參與者包括機構投資者及符合資格的個人投資者。',src:'第5章 10.9'}
+,{ch:'第6章 期權及場外衍生工具',type:'資金',item:'聯交所期權結算所參與者速動資金',num:'直接結算參與者：500萬港元；全面結算參與者：1億港元起，第5個其後每個非結算參與者加2,000萬，上限3.9億',note:'這點要修正：不是全面結算參與者只需2,000萬；2,000萬是額外增加額。另註冊機構全面結算參與者一級資本不少於3.9億。',src:'第6章 2.10'}
+,{ch:'第6章 期權及場外衍生工具',type:'資金',item:'聯交所期權結算所儲備基金初次供款',num:'直接結算參與者：150萬港元；全面結算參與者：500萬港元',note:'全面結算參與者由第四份結算協議書開始，每份與買賣參與者訂立的結算協議書另供款150萬港元。',src:'第6章 2.10–2.11'}
+
+,{ch:'第1章 監管架構',type:'考點',item:'私人公司定義中的數字',num:'成員人數不得超過50人；不可向公眾發售股份或債權證',note:'「50人」是私人公司定義常見數字。',src:'第1章 3.5'}
+,{ch:'第1章 監管架構',type:'比例',item:'更改類別股份權利的少數股東保障',num:'持有不少於10%該類別股份總表決權的人，可向法院呈請取消有關變更',note:'與5%要求開會、100名/10%要求調查分開記。',src:'第1章 3.20'}
+,{ch:'第1章 監管架構',type:'比例',item:'董事貸款例外',num:'貸款價值不超過公司淨資產5%屬例外情況之一',note:'董事貸款一般需成員批准；5%是例外數字。',src:'第1章 3.44'}
+,{ch:'第1章 監管架構',type:'限期',item:'法院強制清盤理由：未開業/停業',num:'成立為法團後1年內未開始營業，或停業一整年，可由法院清盤',note:'公司清盤理由的時間數字。',src:'第1章 3.50'}
+,{ch:'第2章 附屬法例',type:'限期',item:'年度財務報表及停業帳目',num:'財政年度終結後4個月內呈交；停業帳目於停業日期後4個月內呈交',note:'Google表有提到，v2表要獨立列出，因為很常考。',src:'第2章 6.10'}
+,{ch:'第2章 附屬法例',type:'考點',item:'速動資產常見時間口徑',num:'銀行存款：6個月內到期；應收費用/佣金/利息：隨後3個月內到期發單或已發單未逾到期日1個月；預付營運開支：隨後3個月內招致',note:'這是FRR計算題常見「月」字眼。',src:'第2章 1.18'}
+,{ch:'第3章 證券業務管理及監管',type:'紀錄',item:'打擊洗錢：客戶及交易紀錄保存',num:'客戶文件：業務關係期間及關係終止後至少5年；交易文件：交易完成日期後至少5年',note:'AML高頻紀錄保存期限。',src:'第3章 5.46'}
+,{ch:'第4章 聯交所證券買賣',type:'資金',item:'主板上市公眾持股及股東數',num:'公眾持股至少25%；公眾持股市值至少1.25億港元；股東至少300名；上市市值至少5億港元',note:'若上市時預期市值超過100億，公眾持股可接受15%至25%。',src:'第4章 3.34'}
+,{ch:'第4章 聯交所證券買賣',type:'資金',item:'主板上市三項定量測試',num:'盈利測試：最近一年3,500萬+前兩年合計4,500萬；市值/收益/現金流：20億+5億+1億；市值/收益：40億+5億',note:'這組數字多但很考試化，建議直接背成「35/45、20/5/1、40/5」。',src:'第4章 3.35'}
+,{ch:'第4章 聯交所證券買賣',type:'資金',item:'GEM上市基本數字',num:'至少2個財政年度營業紀錄；兩個財政年度淨現金流入最少3,000萬港元；上市時市值不少於1.5億港元；公眾持股市值不少於4,500萬港元；公眾持有人至少100人',note:'GEM和主板不要混淆：GEM是2年、3,000萬、1.5億、4,500萬、100人。',src:'第4章 3.38'}
+,{ch:'第5章 其他證券活動',type:'限期',item:'研究報告安靜期',num:'首次公開招股定價後40日內；第二次公開發售定價後10日內',note:'與分析員交易限制「研究前30日/後3個營業日」一起背。',src:'第5章 5.10附註'}
+,{ch:'第5章 其他證券活動',type:'比例',item:'北向賣空限制',num:'單一交易日可賣空數量不超過開市時CCASS持有該證券數量1%；任何連續10個交易日累計不超過5%；未平倉淡倉達25%可暫停，低於20%可恢復',note:'這組是滬深港通北向賣空數字，和外資持股10%/30%分開。',src:'第5章 10.50–10.51'}
+,{ch:'第5章 其他證券活動',type:'比例',item:'內地融資融券監控指標',num:'個股融資監控指標達25%暫停保證金交易，跌至20%恢復；ETF融資融券餘額/抵押品市值達75%暫停，跌至70%以下恢復',note:'滬深港通相關「25/20」及「75/70」組合。',src:'第5章 10.45–10.46'}
+,{ch:'第5章 其他證券活動',type:'紀錄',item:'互聯網交易/網絡保安備份',num:'至少每天將紀錄及數據庫在離線媒體備份；至少每年向可接達內部網絡及系統的職員提供網絡保安意識培訓',note:'已列年度培訓，補上「每天備份」。',src:'第5章 6.22–6.23'}
+,{ch:'第6章 期權及場外衍生工具',type:'比例',item:'期權莊家撤銷風險',num:'一般莊家連續兩個月未能對每個期權類別最少50%的開價要求作出回應，可導致莊家執照被撤銷',note:'不是主線大考點，但屬「月/比例」型數字。',src:'第6章 2.20'}
+,{ch:'第6章 期權及場外衍生工具',type:'限期',item:'場外衍生工具對手信貸風險檢討',num:'收到對手經審核財務數據後，至少每年檢討一次對手信貸風險',note:'OTC衍生工具持續要求的「每年」考點。',src:'第6章 7.20'}
+,{ch:'第6章 期權及場外衍生工具',type:'限期',item:'結構性產品短期要約期',num:'不超過兩個星期的要約期內以相同條款售予多人',note:'用於場外衍生工具/結構性產品相關例外情境。',src:'第6章 5.3'}
+
+];
+const chapters=[...new Set(rows.map(r=>r.ch))];
+const storageKey='hksi_p2_focus_v4';
+let focused=new Set(JSON.parse(localStorage.getItem(storageKey)||'[]'));
+let currentCh='';
+let focusOnly=false;
+let quizMode=false;
+let showAnswers=false;
+const chips=document.getElementById('chips');
+const focusOnlyBtn=document.getElementById('focusOnly');
+const clearFocusBtn=document.getElementById('clearFocus');
+const focusCount=document.getElementById('focusCount');
+const quizBtn=document.getElementById('quizMode');
+const checkQuizBtn=document.getElementById('checkQuiz');
+const toggleAnswersBtn=document.getElementById('toggleAnswers');
+const quizMsg=document.getElementById('quizMsg');
+const keyOf=(r)=>[r.ch,r.type,r.item,r.num].join('|');
+function saveFocus(){localStorage.setItem(storageKey,JSON.stringify([...focused]));updateFocusCount();}
+function updateFocusCount(){focusCount.textContent=`已關注 ${focused.size} 條`;focusOnlyBtn.classList.toggle('active',focusOnly);quizBtn.classList.toggle('active',quizMode);toggleAnswersBtn.textContent=showAnswers?'隱藏答案':'顯示答案';}
+chips.innerHTML='<button class="chip active" data-ch="">全部章節</button>'+chapters.map(c=>`<button class="chip" data-ch="${c}">${c.replace('第','Ch')}</button>`).join('');
+chips.addEventListener('click',e=>{if(!e.target.classList.contains('chip'))return;document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));e.target.classList.add('active');currentCh=e.target.dataset.ch;render();});
+document.getElementById('q').addEventListener('input',render);document.getElementById('type').addEventListener('change',render);
+focusOnlyBtn.addEventListener('click',()=>{focusOnly=!focusOnly;render();});
+clearFocusBtn.addEventListener('click',()=>{if(!focused.size)return;if(confirm('確定清除全部關注？')){focused.clear();saveFocus();render();}});
+quizBtn.addEventListener('click',()=>{quizMode=!quizMode;showAnswers=false;quizMsg.textContent='';render();});
+checkQuizBtn.addEventListener('click',checkQuizAnswers);
+toggleAnswersBtn.addEventListener('click',()=>{if(!quizMode)quizMode=true;showAnswers=!showAnswers;quizMsg.textContent=showAnswers?'已顯示答案':'已隱藏答案';render();});
+document.getElementById('grid').addEventListener('change',e=>{if(!e.target.classList.contains('focuscheck'))return;const k=e.target.dataset.key;if(e.target.checked)focused.add(k);else focused.delete(k);saveFocus();render();});
+
+function escapeHtml(s){return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+function escapeAttr(s){return escapeHtml(s).replace(/'/g,'&#39;');}
+function toHalfWidth(s){return String(s).replace(/[０-９]/g,ch=>String.fromCharCode(ch.charCodeAt(0)-0xFEE0)).replace(/[，]/g,',').replace(/[．]/g,'.');}
+function normNum(s){return toHalfWidth(s).replace(/[,\s]/g,'').trim();}
+function blankifyNumbers(text){
+  let idx=0;
+  return escapeHtml(text).replace(/\d[\d,]*(?:\.\d+)?/g, m=>{
+    idx++;
+    const ans=escapeAttr(m);
+    const ansHtml=showAnswers?`<span class="answer">${ans}</span>`:'';
+    return `<span class="blankwrap"><input class="quiz-input" data-answer="${ans}" inputmode="decimal" autocomplete="off" placeholder="?">${ansHtml}</span>`;
+  });
+}
+function checkQuizAnswers(){
+  if(!quizMode){quizMode=true;showAnswers=false;render();}
+  const inputs=[...document.querySelectorAll('.quiz-input')];
+  if(!inputs.length){quizMsg.textContent='沒有可核對的空格';return;}
+  let ok=0, filled=0;
+  inputs.forEach(inp=>{
+    const v=normNum(inp.value);
+    const a=normNum(inp.dataset.answer);
+    inp.classList.remove('correct','wrong');
+    if(v){filled++;}
+    if(v && v===a){inp.classList.add('correct');ok++;}
+    else{inp.classList.add('wrong');}
+  });
+  quizMsg.textContent=`核對：答對 ${ok} / ${inputs.length} 空；已填 ${filled} 空`;
+}
+function render(){
+  const q=document.getElementById('q').value.trim().toLowerCase();
+  const typ=document.getElementById('type').value;
+  const filtered=rows.filter(r=>{const k=keyOf(r);return (!currentCh||r.ch===currentCh)&&(!typ||r.type===typ)&&(!focusOnly||focused.has(k))&&(!q||Object.values(r).join(' ').toLowerCase().includes(q));});
+  document.getElementById('count').textContent=`顯示 ${filtered.length} / ${rows.length} 條｜Dark theme｜${focusOnly?'關注模式':'全部模式'}｜${quizMode?'填空模式':'閱讀模式'}`;
+  document.getElementById('grid').innerHTML=filtered.map(r=>{
+    const k=keyOf(r);const isOn=focused.has(k);
+    const numHtml=quizMode?blankifyNumbers(r.num):escapeHtml(r.num);
+    return `<article class="card ${isOn?'focused':''}"><div class="top"><div><div class="chapter">${escapeHtml(r.ch)}</div><span class="tag ${escapeHtml(r.type)}">${escapeHtml(r.type)}</span></div><label class="focus-toggle"><input class="focuscheck" type="checkbox" data-key="${escapeAttr(k)}" ${isOn?'checked':''}><span class="focus-label">關注</span></label></div><div class="item">${escapeHtml(r.item)}</div><div class="num ${quizMode?'quizline':''}">${numHtml}</div><div class="note">${escapeHtml(r.note)}</div><div class="source">來源：${escapeHtml(r.src)}</div></article>`
+  }).join('');
+  updateFocusCount();
+}
+render();
+</script>
+</body>
+</html>
