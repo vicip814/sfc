@@ -15,16 +15,19 @@ main{padding:12px}.count{font-size:13px;color:var(--muted);margin:4px 0 10px}.ca
 .focus-toggle{display:flex;align-items:center;gap:7px;min-width:70px;justify-content:flex-end;font-size:12px;color:var(--muted);user-select:none}.focus-toggle input{appearance:none;width:19px;height:19px;border:1px solid var(--line);border-radius:6px;background:#0f172a;display:inline-grid;place-items:center;margin:0}.focus-toggle input:checked{background:#f6ad55;border-color:#f6ad55}.focus-toggle input:checked::after{content:'✓';font-weight:900;color:#111827;font-size:14px}.focus-label{color:#f6ad55;font-weight:700}.reviewhint{font-size:12px;color:var(--muted);padding-top:4px}
 
 .quiz-input{width:5.8em;max-width:42vw;border:1px solid #3b4a66;border-radius:8px;background:#0b1223;color:var(--text);padding:4px 6px;margin:0 3px;font-size:16px;font-weight:800;text-align:center}.quiz-input.correct{border-color:#68d391;background:#082315;color:#b7f7cc}.quiz-input.wrong{border-color:#fca5a5;background:#2a0f12;color:#ffd2d2}.blankwrap{white-space:nowrap;display:inline-flex;align-items:center;gap:3px}.answer{font-size:12px;color:#f6ad55;margin-right:3px}.quizmsg{font-size:12px;color:#c4b5fd;padding-top:4px}.num.quizline{line-height:2.15}.focusbtn.quiz{color:#c4b5fd}.focusbtn.quiz.active{background:#7c3aed;border-color:#7c3aed;color:white}
+.htitle{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.htitle h1{margin:0;flex:1 1 auto}.hToggle{flex:0 0 auto;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:6px 11px;background:#0f172a;color:var(--accent);font-size:13px;cursor:pointer;line-height:1}#hDetails{padding-top:8px}header.collapsed #hDetails{display:none}header.collapsed{padding-bottom:10px}header.collapsed .htitle h1{font-size:15px}
 @media(min-width:760px){main{max-width:1100px;margin:auto}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.card{margin:0}.controls{grid-template-columns:1fr 160px}}
 </style>
 </head>
 <body>
 <header>
-<h1>HKSI Paper 2｜限期・資金要求・罰款速記表｜Dark補漏v5｜關注＋填空測驗版</h1>
+<div class="htitle"><h1>HKSI Paper 2｜限期・資金要求・罰款速記表｜Dark補漏v5｜關注＋填空測驗版</h1><button class="hToggle" id="hToggle" aria-expanded="true">收合 ▲</button></div>
+<div id="hDetails">
 <div class="sub">按 7 章主題整理。重點放在考試最容易問的「幾日內、幾多錢、幾多年、幾多%」。新增「數字填空模式」，可遮住數字自行測驗。</div>
 <div class="controls"><input id="q" placeholder="搜尋：例如 7個營業日、500萬、速動資金、T+2"><select id="type"><option value="">全部類別</option><option>限期</option><option>資金</option><option>罰則</option><option>比例</option><option>紀錄</option><option>考點</option></select></div>
 <div class="chips" id="chips"></div>
 <div class="focusbar"><button class="focusbtn" id="focusOnly">只看關注</button><button class="focusbtn clear" id="clearFocus">清除全部關注</button><button class="focusbtn quiz" id="quizMode">數字填空模式</button><button class="focusbtn quiz" id="checkQuiz">核對答案</button><button class="focusbtn quiz" id="toggleAnswers">顯示答案</button><span class="reviewhint" id="focusCount"></span><span class="quizmsg" id="quizMsg"></span></div>
+</div>
 </header>
 <main>
 <div class="count" id="count"></div>
@@ -153,6 +156,14 @@ const quizBtn=document.getElementById('quizMode');
 const checkQuizBtn=document.getElementById('checkQuiz');
 const toggleAnswersBtn=document.getElementById('toggleAnswers');
 const quizMsg=document.getElementById('quizMsg');
+const headerEl=document.querySelector('header');
+const hToggle=document.getElementById('hToggle');
+const headerKey='hksi_p2_header_collapsed';
+function applyHeaderState(collapsed){headerEl.classList.toggle('collapsed',collapsed);hToggle.textContent=collapsed?'展開 ▼':'收合 ▲';hToggle.setAttribute('aria-expanded',String(!collapsed));}
+const savedHeader=localStorage.getItem(headerKey);
+let headerCollapsed=savedHeader===null?window.innerWidth<760:savedHeader==='1';
+applyHeaderState(headerCollapsed);
+hToggle.addEventListener('click',()=>{headerCollapsed=!headerCollapsed;localStorage.setItem(headerKey,headerCollapsed?'1':'0');applyHeaderState(headerCollapsed);});
 const keyOf=(r)=>[r.ch,r.type,r.item,r.num].join('|');
 function saveFocus(){localStorage.setItem(storageKey,JSON.stringify([...focused]));updateFocusCount();}
 function updateFocusCount(){focusCount.textContent=`已關注 ${focused.size} 條`;focusOnlyBtn.classList.toggle('active',focusOnly);quizBtn.classList.toggle('active',quizMode);toggleAnswersBtn.textContent=showAnswers?'隱藏答案':'顯示答案';}
