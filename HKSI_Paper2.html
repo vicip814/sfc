@@ -170,14 +170,18 @@ function escapeHtml(s){return String(s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'
 function escapeAttr(s){return escapeHtml(s).replace(/'/g,'&#39;');}
 function toHalfWidth(s){return String(s).replace(/[０-９]/g,ch=>String.fromCharCode(ch.charCodeAt(0)-0xFEE0)).replace(/[，]/g,',').replace(/[．]/g,'.');}
 function normNum(s){return toHalfWidth(s).replace(/[,\s]/g,'').trim();}
-function blankifyNumbers(text){
+function blankifyNumbers(text,keyPrefix){
   let idx=0;
   return escapeHtml(text).replace(/\d[\d,]*(?:\.\d+)?/g, m=>{
     idx++;
     const ans=escapeAttr(m);
+    const qid=escapeAttr(keyPrefix+'#'+idx);
     const ansHtml=showAnswers?`<span class="answer">${ans}</span>`:'';
-    return `<span class="blankwrap"><input class="quiz-input" data-answer="${ans}" inputmode="decimal" autocomplete="off" placeholder="?">${ansHtml}</span>`;
+    return `<span class="blankwrap"><input class="quiz-input" data-qid="${qid}" data-answer="${ans}" inputmode="decimal" autocomplete="off" placeholder="?">${ansHtml}</span>`;
   });
+}
+function maskNumbers(text){
+  return escapeHtml(text).replace(/\d[\d,]*(?:\.\d+)?/g, '▢');
 }
 function checkQuizAnswers(){
   if(!quizMode){quizMode=true;showAnswers=false;render();}
@@ -199,11 +203,15 @@ function render(){
   const typ=document.getElementById('type').value;
   const filtered=rows.filter(r=>{const k=keyOf(r);return (!currentCh||r.ch===currentCh)&&(!typ||r.type===typ)&&(!focusOnly||focused.has(k))&&(!q||Object.values(r).join(' ').toLowerCase().includes(q));});
   document.getElementById('count').textContent=`顯示 ${filtered.length} / ${rows.length} 條｜Dark theme｜${focusOnly?'關注模式':'全部模式'}｜${quizMode?'填空模式':'閱讀模式'}`;
+  const prev={};
+  document.querySelectorAll('.quiz-input').forEach(inp=>{prev[inp.dataset.qid]={v:inp.value,c:inp.classList.contains('correct'),w:inp.classList.contains('wrong')};});
   document.getElementById('grid').innerHTML=filtered.map(r=>{
     const k=keyOf(r);const isOn=focused.has(k);
-    const numHtml=quizMode?blankifyNumbers(r.num):escapeHtml(r.num);
-    return `<article class="card ${isOn?'focused':''}"><div class="top"><div><div class="chapter">${escapeHtml(r.ch)}</div><span class="tag ${escapeHtml(r.type)}">${escapeHtml(r.type)}</span></div><label class="focus-toggle"><input class="focuscheck" type="checkbox" data-key="${escapeAttr(k)}" ${isOn?'checked':''}><span class="focus-label">關注</span></label></div><div class="item">${escapeHtml(r.item)}</div><div class="num ${quizMode?'quizline':''}">${numHtml}</div><div class="note">${escapeHtml(r.note)}</div><div class="source">來源：${escapeHtml(r.src)}</div></article>`
+    const numHtml=quizMode?blankifyNumbers(r.num,k):escapeHtml(r.num);
+    const noteHtml=quizMode?maskNumbers(r.note):escapeHtml(r.note);
+    return `<article class="card ${isOn?'focused':''}"><div class="top"><div><div class="chapter">${escapeHtml(r.ch)}</div><span class="tag ${escapeHtml(r.type)}">${escapeHtml(r.type)}</span></div><label class="focus-toggle"><input class="focuscheck" type="checkbox" data-key="${escapeAttr(k)}" ${isOn?'checked':''}><span class="focus-label">關注</span></label></div><div class="item">${escapeHtml(r.item)}</div><div class="num ${quizMode?'quizline':''}">${numHtml}</div><div class="note">${noteHtml}</div><div class="source">來源：${escapeHtml(r.src)}</div></article>`
   }).join('');
+  document.querySelectorAll('.quiz-input').forEach(inp=>{const p=prev[inp.dataset.qid];if(p){inp.value=p.v;if(p.c)inp.classList.add('correct');if(p.w)inp.classList.add('wrong');}});
   updateFocusCount();
 }
 render();
